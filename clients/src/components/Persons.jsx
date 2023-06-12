@@ -1,6 +1,6 @@
-import { useState } from 'react'
-import { gql, useQuery } from '@apollo/client'
-import { FIND_PERSON } from '../queries'
+import { useState } from "react";
+import { gql, useQuery } from "@apollo/client";
+import { FIND_PERSON } from "../queries";
 
 const Person = ({ person, onClose }) => {
   return (
@@ -12,17 +12,15 @@ const Person = ({ person, onClose }) => {
       <div>{person.phone}</div>
       <button onClick={onClose}>close</button>
     </div>
-  )
-}
+  );
+};
 
 const Persons = ({ persons }) => {
-
-  const [nameToSearch, setNameToSearch] = useState(null)
+  const [nameToSearch, setNameToSearch] = useState(null);
   const result = useQuery(FIND_PERSON, {
     variables: { nameToSearch },
     skip: !nameToSearch,
-  })
-
+  });
 
   if (nameToSearch && result.data) {
     return (
@@ -30,7 +28,7 @@ const Persons = ({ persons }) => {
         person={result.data.findPerson}
         onClose={() => setNameToSearch(null)}
       />
-    )
+    );
   }
 
   return (
@@ -38,15 +36,12 @@ const Persons = ({ persons }) => {
       <h2>Persons</h2>
       {persons.map((p) => (
         <div key={p.name}>
-          {p.name} {p.phone} 
-
-          <button onClick={() => setNameToSearch(p.name)}>
-            show address
-          </button>
+          {p.name} {p.phone}
+          <button onClick={() => setNameToSearch(p.name)}>show address</button>
         </div>
       ))}
     </div>
-  )
-}
+  );
+};
 
-export default Persons
+export default Persons;

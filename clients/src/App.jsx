@@ -1,8 +1,9 @@
-import { gql, useQuery } from "@apollo/client";
+import { useQuery } from "@apollo/client";
 import Persons from "./components/Persons";
 import PersonForm from "./components/PersonForm";
 import { ALL_PERSONS } from "./queries";
 import PhoneForm from "./components/PhoneForm";
+// import './App.css'
 
 const Notify = ({ errorMessage }) => {
   if (!errorMessage) {
@@ -31,6 +32,7 @@ const App = () => {
 
   return (
     <div>
+      <h1>hello</h1>
       <Notify errorMessage={errorMessage} />
       <Persons persons={result.data.allPersons} />
       <PersonForm setError={notify} />
