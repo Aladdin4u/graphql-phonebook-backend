@@ -1,9 +1,10 @@
+import { useState } from "react";
 import { useQuery } from "@apollo/client";
 import Persons from "./components/Persons";
 import PersonForm from "./components/PersonForm";
-import { ALL_PERSONS } from "./queries";
 import PhoneForm from "./components/PhoneForm";
-// import './App.css'
+import { ALL_PERSONS } from "./queries";
+import './App.css'
 
 const Notify = ({ errorMessage }) => {
   if (!errorMessage) {
@@ -15,9 +16,7 @@ const Notify = ({ errorMessage }) => {
 const App = () => {
   const [errorMessage, setErrorMessage] = useState(null);
 
-  const result = useQuery(ALL_PERSONS, {
-    pollInterval: 2000,
-  });
+  const result = useQuery(ALL_PERSONS);
 
   if (result.loading) {
     return <div>loading...</div>;
@@ -31,8 +30,7 @@ const App = () => {
   };
 
   return (
-    <div>
-      <h1>hello</h1>
+    <div className="container">
       <Notify errorMessage={errorMessage} />
       <Persons persons={result.data.allPersons} />
       <PersonForm setError={notify} />

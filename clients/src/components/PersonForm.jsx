@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { useMutation, onError } from "@apollo/client";
-import { CREATE_PERSON } from "../queries";
+import { useMutation } from "@apollo/client";
+import { CREATE_PERSON, ALL_PERSONS } from "../queries";
 
 const PersonForm = ({ setError }) => {
   const [name, setName] = useState("");
