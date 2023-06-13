@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { gql, useQuery } from "@apollo/client";
+import { useQuery } from "@apollo/client";
 import { FIND_PERSON } from "../queries";
+import '../App.css'
 
 const Person = ({ person, onClose }) => {
   return (
@@ -35,7 +36,7 @@ const Persons = ({ persons }) => {
     <div>
       <h2>Persons</h2>
       {persons.map((p) => (
-        <div key={p.name}>
+        <div key={p.name} className="person-container">
           {p.name} {p.phone}
           <button onClick={() => setNameToSearch(p.name)}>show address</button>
         </div>
