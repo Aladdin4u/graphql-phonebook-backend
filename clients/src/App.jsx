@@ -2,17 +2,10 @@ import { useState } from "react";
 import { useQuery } from "@apollo/client";
 import Persons from "./components/Persons";
 import PersonForm from "./components/PersonForm";
-import PhoneForm from "./components/PhoneForm";
+import NavBar from "./components/Navbar";
+import Notify from "./components/Notify";
 import { ALL_PERSONS } from "./queries";
 import './App.css'
-import NavBar from "./components/Navbar";
-
-const Notify = ({ errorMessage }) => {
-  if (!errorMessage) {
-    return null;
-  }
-  return <div style={{ color: "red" }}>{errorMessage}</div>;
-};
 
 const App = () => {
   const [errorMessage, setErrorMessage] = useState(null);
@@ -60,9 +53,8 @@ const App = () => {
       <Persons persons={data} />
       {/* <Persons persons={result.data.allPersons} /> */}
       {showForm && <PersonForm setError={notify} />}
-      <PhoneForm setError={notify} />
     </div>
   );
-};
+}
 
 export default App;
