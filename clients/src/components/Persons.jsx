@@ -1,12 +1,14 @@
 import { useState } from "react";
 import { useQuery } from "@apollo/client";
 import { FIND_PERSON } from "../queries";
-import '../App.css'
+import "../App.css";
 
 const Person = ({ person, onClose }) => {
   return (
     <div>
-      <h2>{person.name}</h2>
+      <h2>
+        {/* {person.name} */}
+      Arto Hellas</h2>
       <div>
         {person.address.street} {person.address.city}
       </div>
@@ -33,14 +35,27 @@ const Persons = ({ persons }) => {
   }
 
   return (
-    <div>
-      <h2>Persons</h2>
-      {persons.map((p) => (
-        <div key={p.name} className="person-container">
-          {p.name} {p.phone}
-          <button onClick={() => setNameToSearch(p.name)}>show address</button>
-        </div>
-      ))}
+    <div className="person-container">
+      <div className="person-nav">
+        <ul className="person-ul">
+          <li className="person-nav-li">Recents</li>
+          <li className="person-nav-li">Favourite</li>
+          <li className="person-nav-li">Missed</li>
+        </ul>
+      </div>
+      <div className="person-list">
+        {persons.map((p) => (
+          <div key={p.name} className="person">
+            <div className="p-left">
+              <div className="p-icon">{p.phone ? p.name[0] : ""}</div>
+              {p.name}
+            </div>
+            <button onClick={() => setNameToSearch(p.name)}>
+              show address
+            </button>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

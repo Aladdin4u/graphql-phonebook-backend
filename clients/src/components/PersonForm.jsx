@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { CREATE_PERSON, ALL_PERSONS } from "../queries";
-import '../App.css'
 
 const PersonForm = ({ setError }) => {
   const [name, setName] = useState("");
@@ -29,38 +28,49 @@ const PersonForm = ({ setError }) => {
   };
 
   return (
-    <div>
-      <h2>create new</h2>
+    <div className="person-form">
       <form onSubmit={submit}>
-        <div>
-          name{" "}
+        <div className="form-header">
+          <h2 className="form-title">Create new</h2>
+          <button type="submit" className="form-btn">
+            Save
+          </button>
+        </div>
+        <div className="form-field">
+          <div className="icon"></div>
           <input
             value={name}
+            placeholder="First and Last Name"
             onChange={({ target }) => setName(target.value)}
+            className="input-field"
           />
         </div>
-        <div>
-          phone{" "}
+        <div className="form-field">
+          <div className="icon"></div>
           <input
             value={phone}
+            placeholder="Phone"
             onChange={({ target }) => setPhone(target.value)}
+            className="input-field"
           />
         </div>
-        <div>
-          street{" "}
-          <input
-            value={street}
-            onChange={({ target }) => setStreet(target.value)}
-          />
+        <div className="form-field">
+          <div className="icon"></div>
+          <div className="form-column">
+            <input
+              value={street}
+              placeholder="Street"
+              onChange={({ target }) => setStreet(target.value)}
+              className="input-field"
+            />
+            <input
+              value={city}
+              placeholder="City"
+              onChange={({ target }) => setCity(target.value)}
+              className="input-field"
+            />
+          </div>
         </div>
-        <div>
-          city{" "}
-          <input
-            value={city}
-            onChange={({ target }) => setCity(target.value)}
-          />
-        </div>
-        <button type="submit">add!</button>
       </form>
     </div>
   );

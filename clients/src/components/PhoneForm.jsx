@@ -25,25 +25,32 @@ const PhoneForm = ({ setError }) => {
   };
 
   return (
-    <div>
-      <h2>change number</h2>
-
+    <div className="person-form">
       <form onSubmit={submit}>
-        <div>
-          name{" "}
+        <div className="form-header">
+          <h2 className="form-title">Edit number</h2>
+          <button type="submit" className="form-btn">
+            Save
+          </button>
+        </div>
+        <div className="form-field">
+          <div className="icon"></div>
           <input
             value={name}
+            placeholder="Name"
             onChange={({ target }) => setName(target.value)}
+            className="input-field"
           />
         </div>
-        <div>
-          phone{" "}
+        <div className="form-field">
+          <div className="icon"></div>
           <input
             value={phone}
-            onChange={({ target }) => setPhone(target.value)}
+            placeholder="Phone"
+            onChange={({ target }) => setName(target.value)}
+            className="input-field"
           />
         </div>
-        <button type="submit">change number</button>
       </form>
     </div>
   );
