@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { CREATE_PERSON, ALL_PERSONS } from "../queries";
+import { FaPhoneAlt, FaUserAlt, FaHome } from "react-icons/fa";
 
 const PersonForm = ({ setError }) => {
   const [name, setName] = useState("");
@@ -37,7 +38,7 @@ const PersonForm = ({ setError }) => {
           </button>
         </div>
         <div className="form-field">
-          <div className="icon"></div>
+          <div className="icon"><FaUserAlt /></div>
           <input
             value={name}
             placeholder="First and Last Name"
@@ -46,7 +47,7 @@ const PersonForm = ({ setError }) => {
           />
         </div>
         <div className="form-field">
-          <div className="icon"></div>
+          <div className="icon"><FaPhoneAlt/></div>
           <input
             value={phone}
             placeholder="Phone"
@@ -55,7 +56,7 @@ const PersonForm = ({ setError }) => {
           />
         </div>
         <div className="form-field">
-          <div className="icon"></div>
+          <div className="icon"><FaHome /></div>
           <div className="form-column">
             <input
               value={street}

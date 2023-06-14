@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useMutation } from "@apollo/client";
-
 import { EDIT_NUMBER } from "../queries";
+import { FaPhoneAlt, FaUserAlt, FaHome } from "react-icons/fa";
 
 const PhoneForm = ({ setError }) => {
   const [name, setName] = useState("");
@@ -34,7 +34,7 @@ const PhoneForm = ({ setError }) => {
           </button>
         </div>
         <div className="form-field">
-          <div className="icon"></div>
+          <div className="icon"><FaUserAlt /></div>
           <input
             value={name}
             placeholder="Name"
@@ -43,11 +43,11 @@ const PhoneForm = ({ setError }) => {
           />
         </div>
         <div className="form-field">
-          <div className="icon"></div>
+          <div className="icon"><FaPhoneAlt/></div>
           <input
             value={phone}
             placeholder="Phone"
-            onChange={({ target }) => setName(target.value)}
+            onChange={({ target }) => setPhone(target.value)}
             className="input-field"
           />
         </div>
